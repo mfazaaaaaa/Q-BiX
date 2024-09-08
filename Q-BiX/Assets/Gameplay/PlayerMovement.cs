@@ -1,40 +1,53 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 20f;
-    public LayerMask groundLayer;  // Gunakan layer ground untuk mendeteksi tanah
+    private float horizontal;
+    private float speed = 8f;
+    private float jumpingPower = 10f;
+    private bool isFacingRight = true;
 
-    private Rigidbody2D rb;
-    private Vector2 movement;
-    private bool isGrounded;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
 
     void Update()
     {
-        // Mendapatkan input dari pemain untuk gerakan
-        movement.x = Input.GetAxisRaw("Horizontal");
+        horizontal = Input.GetAxisRaw("Horizontal");
 
-        // Memeriksa apakah player berada di tanah menggunakan raycast
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1f, groundLayer);
-        Debug.Log("Grounded: " + isGrounded); // Debugging untuk melihat apakah player terdeteksi di tanah
-
-        // Jika tombol lompat ditekan dan player berada di tanah, lompat
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            Debug.Log("Jump pressed!"); // Tambahkan log untuk melihat jika input lompat terdeteksi
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
+
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+
+        Flip();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        // Menggerakkan karakter
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;  
+        }
     }
 }
