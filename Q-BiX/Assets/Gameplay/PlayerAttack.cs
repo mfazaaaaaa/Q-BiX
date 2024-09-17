@@ -1,30 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public int damageAmount = 20;  // Jumlah damage yang diberikan
-    public string targetTag = "Enemy";  // Tag target yang bisa menerima damage
+    public int attackDamage = 20; // Damage yang diberikan kepada musuh
+    public Collider2D attackCollider; // Collider yang sudah disiapkan di depan pemain
 
-    private void OnTriggerEnter2D(Collider2D other)
+    // Buffer untuk menampung collider musuh yang terkena serangan
+    private Collider2D[] hitEnemies = new Collider2D[10];
+
+    void Update()
     {
-        // Mengecek apakah objek yang memasuki area memiliki tag yang sesuai
-        if (other.CompareTag(targetTag))
+        // Menyerang saat tombol "R" ditekan
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            // Mencari komponen Player pada objek
-            Player playerComponent = other.GetComponent<Player>();
-
-            if (playerComponent != null)
-            {
-                playerComponent.TakeDamage(damageAmount);  // Jika objek memiliki komponen Player, panggil fungsi TakeDamage
-            }
+            Attack();
         }
     }
 
-    private void OnDrawGizmos()
+    void Attack()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, GetComponent<BoxCollider2D>().size);  // Gambar area trigger untuk debugging
+        // Membuat filter untuk mendeteksi musuh dengan layer tertentu (optional)
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.NoFilter(); // Tidak ada filter khusus, semua collider diperbolehkan
+
+        // Mencari musuh dalam collider serangan
+        int hitCount = attackCollider.OverlapCollider(filter, hitEnemies);
+
+        // Memproses setiap musuh yang terkena serangan
+        for (int i = 0; i < hitCount; i++)
+        {
+            Collider2D enemy = hitEnemies[i];
+
+            if (enemy.CompareTag("Enemy"))
+            {
+                enemy.GetComponent<EnemyHealth>().TakeDamage(attackDamage);
+            }
+        }
     }
 }
