@@ -4,44 +4,27 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private GameObject attackArea = default;
+    public int damageAmount = 20;  // Jumlah damage yang diberikan
+    public string targetTag = "Enemy";  // Tag target yang bisa menerima damage
 
-    private bool attacking = false;
-
-    private float timeToAttack = 0.25f;
-    private float timer = 0f;
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        attackArea = transform.GetChild(0).gameObject;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Mengecek apakah objek yang memasuki area memiliki tag yang sesuai
+        if (other.CompareTag(targetTag))
         {
-            Attack();
-        }
+            // Mencari komponen Player pada objek
+            Player playerComponent = other.GetComponent<Player>();
 
-        if (attacking)
-        {
-            timer += Time.deltaTime;
-
-            if (timer >= timeToAttack)
+            if (playerComponent != null)
             {
-                timer = 0;
-                attacking = false;
-                attackArea.SetActive(attacking);
+                playerComponent.TakeDamage(damageAmount);  // Jika objek memiliki komponen Player, panggil fungsi TakeDamage
             }
-
         }
     }
 
-    private void Attack()
+    private void OnDrawGizmos()
     {
-        attacking = true;
-        attackArea.SetActive(attacking);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, GetComponent<BoxCollider2D>().size);  // Gambar area trigger untuk debugging
     }
 }
