@@ -1,7 +1,5 @@
 using UnityEngine;
 
-using UnityEngine;
-
 public class EnemyFollow : MonoBehaviour
 {
     private float speed = 5f;  // Kecepatan musuh
