@@ -430,16 +430,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46010507}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 902621858}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -960, y: -1667.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &46010510
@@ -6531,6 +6531,7 @@ RectTransform:
   - {fileID: 725608421}
   - {fileID: 400508860}
   - {fileID: 1448342528}
+  - {fileID: 46010509}
   m_Father: {fileID: 1168891732}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -10275,7 +10276,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1497353397}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1019173222}
+        m_TargetAssemblyTypeName: Mainmenu, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1497353397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13638,29 +13651,29 @@ MonoBehaviour:
   - {fileID: 807446878}
   - {fileID: 684998339}
   yellowSkinSprites:
-  - {fileID: -4789939190775233835, guid: 119937c5e9d68524ca56a53c893159bb, type: 3}
-  - {fileID: 7727043054333028667, guid: 119937c5e9d68524ca56a53c893159bb, type: 3}
-  - {fileID: 7624576829263390333, guid: 119937c5e9d68524ca56a53c893159bb, type: 3}
-  - {fileID: -9139607896875705449, guid: 119937c5e9d68524ca56a53c893159bb, type: 3}
-  - {fileID: -854805701805938814, guid: 119937c5e9d68524ca56a53c893159bb, type: 3}
+  - {fileID: -4001810716029981900, guid: 119937c5e9d68524ca56a53c893159bb, type: 3}
+  - {fileID: 2155101044283475878, guid: 119937c5e9d68524ca56a53c893159bb, type: 3}
+  - {fileID: -6477674462084445481, guid: 119937c5e9d68524ca56a53c893159bb, type: 3}
+  - {fileID: -8496405173574405872, guid: 119937c5e9d68524ca56a53c893159bb, type: 3}
+  - {fileID: 9152564361908533645, guid: 119937c5e9d68524ca56a53c893159bb, type: 3}
   blueSkinSprites:
-  - {fileID: 7870485280620772758, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
-  - {fileID: 3775121844306442137, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
-  - {fileID: 4912922523835652492, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
-  - {fileID: -692126318978424197, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
-  - {fileID: -2326177810515215720, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
+  - {fileID: 5421506507923333436, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
+  - {fileID: 2272025443112571159, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
+  - {fileID: 8390549142204198041, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
+  - {fileID: 613724983512626792, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
+  - {fileID: -8292913243452755237, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
   greenSkinSprites:
-  - {fileID: 4540313009980805395, guid: b0101fe73cb4d5d4b824a92c6ac99b1f, type: 3}
-  - {fileID: 6396225761740720123, guid: b0101fe73cb4d5d4b824a92c6ac99b1f, type: 3}
-  - {fileID: -5800529333405695025, guid: b0101fe73cb4d5d4b824a92c6ac99b1f, type: 3}
-  - {fileID: -8802328545024141150, guid: b0101fe73cb4d5d4b824a92c6ac99b1f, type: 3}
-  - {fileID: 2892763568072266050, guid: b0101fe73cb4d5d4b824a92c6ac99b1f, type: 3}
+  - {fileID: 4434410672687877118, guid: b0101fe73cb4d5d4b824a92c6ac99b1f, type: 3}
+  - {fileID: -1743066236239031671, guid: b0101fe73cb4d5d4b824a92c6ac99b1f, type: 3}
+  - {fileID: 8983272482950766579, guid: b0101fe73cb4d5d4b824a92c6ac99b1f, type: 3}
+  - {fileID: 1657606948512595581, guid: b0101fe73cb4d5d4b824a92c6ac99b1f, type: 3}
+  - {fileID: 5036458893875506904, guid: b0101fe73cb4d5d4b824a92c6ac99b1f, type: 3}
   pinkSkinSprites:
-  - {fileID: 2180041846185956137, guid: 5f85ff88190fdb741aa0369dc2e14359, type: 3}
-  - {fileID: 4858100248916244263, guid: 5f85ff88190fdb741aa0369dc2e14359, type: 3}
-  - {fileID: -1600914551907398600, guid: 5f85ff88190fdb741aa0369dc2e14359, type: 3}
-  - {fileID: -4049696023195739809, guid: 5f85ff88190fdb741aa0369dc2e14359, type: 3}
-  - {fileID: -1491100950996733086, guid: 5f85ff88190fdb741aa0369dc2e14359, type: 3}
+  - {fileID: 2852336339497282303, guid: 5f85ff88190fdb741aa0369dc2e14359, type: 3}
+  - {fileID: 645999010187621397, guid: 5f85ff88190fdb741aa0369dc2e14359, type: 3}
+  - {fileID: 2358695362579853076, guid: 5f85ff88190fdb741aa0369dc2e14359, type: 3}
+  - {fileID: -7123914090748277609, guid: 5f85ff88190fdb741aa0369dc2e14359, type: 3}
+  - {fileID: -6350058784908124158, guid: 5f85ff88190fdb741aa0369dc2e14359, type: 3}
   skinButtons:
   - {fileID: 1312801120}
   - {fileID: 1557442218}
@@ -13785,6 +13798,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 1019173221}
-  - {fileID: 46010509}
   - {fileID: 1054250290}
   - {fileID: 107131514}
