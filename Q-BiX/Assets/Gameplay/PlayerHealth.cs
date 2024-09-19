@@ -3,15 +3,18 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public Slider healthSlider; // Slider untuk health bar musuh
+    public Slider healthSlider; // Slider untuk health bar player
     public int maxHealth = 100;
     private int currentHealth;
+    public GameObject loseText;
+    public EnemyFollow enemyFollow;
 
     void Start()
     {
         currentHealth = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
+        loseText.SetActive(false);
     }
 
     // Fungsi untuk menerima damage
@@ -27,15 +30,19 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    // Update UI health bar musuh
+    // Update UI health bar player
     private void UpdateHealthUI()
     {
         healthSlider.value = currentHealth;
     }
 
-    // Fungsi untuk menghilangkan musuh
+    // Fungsi saat player mati
     private void Die()
     {
-        Destroy(gameObject);
+        loseText.SetActive (true);
+        enemyFollow.enabled = false;
+        GameManager.instance.GoToMainMenu(1f);  // Pindah ke main menu setelah 2 detik
+        Destroy(gameObject);  // Hapus musuh langsung tanpa menunggu
     }
+
 }

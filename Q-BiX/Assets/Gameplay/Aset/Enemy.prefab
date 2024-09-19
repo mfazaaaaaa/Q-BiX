@@ -148,6 +148,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  animator: {fileID: 0}
 --- !u!114 &7138568058378023102
 MonoBehaviour:
   m_ObjectHideFlags: 0

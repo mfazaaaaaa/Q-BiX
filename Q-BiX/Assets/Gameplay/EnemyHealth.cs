@@ -5,7 +5,8 @@ public class EnemyHealth : MonoBehaviour
 {
     public Slider healthSlider; // Slider untuk health bar musuh
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
+    public PlayerMovement playerMovement;  // Reference ke script PlayerMovement
 
     void Start()
     {
@@ -14,7 +15,6 @@ public class EnemyHealth : MonoBehaviour
         healthSlider.value = currentHealth;
     }
 
-    // Fungsi untuk menerima damage
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -27,15 +27,15 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    // Update UI health bar musuh
     private void UpdateHealthUI()
     {
         healthSlider.value = currentHealth;
     }
 
-    // Fungsi untuk menghilangkan musuh
     private void Die()
     {
-        Destroy(gameObject);
+        playerMovement.enabled = false;  // Matikan script PlayerMovement
+        Destroy(gameObject);  // Hapus musuh
+        GameManager.instance.GoToMainMenu(1f);  // Pindah ke main menu setelah 2 detik
     }
 }

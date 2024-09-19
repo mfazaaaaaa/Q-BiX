@@ -10,11 +10,13 @@ public class EnemyFollow : MonoBehaviour
     [SerializeField] private Transform player;  // Referensi untuk posisi player
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Animator animator;  // Animator untuk mengatur animasi
 
     private void Update()
     {
         FollowPlayer();  // Panggil fungsi untuk mengikuti player
         Flip();  // Panggil fungsi untuk membalik arah musuh
+        UpdateAnimation();  // Update animasi berdasarkan kondisi
     }
 
     private void FollowPlayer()
@@ -54,5 +56,14 @@ public class EnemyFollow : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+
+    private void UpdateAnimation()
+    {
+        // Set parameter isRunning jika musuh bergerak di tanah
+        animator.SetBool("isRunning", Mathf.Abs(rb.velocity.x) > 0.1f && IsGrounded());
+
+        // Set parameter isJumping jika musuh tidak berada di tanah
+        animator.SetBool("isJumping", !IsGrounded());
     }
 }
