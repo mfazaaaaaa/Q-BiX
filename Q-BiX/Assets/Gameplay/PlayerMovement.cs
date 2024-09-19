@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,14 +11,29 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Animator animator; // Reference to the Animator
 
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
+        // Set animation parameter for walking
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
+
+        // Set animation parameter for jumping
+        if (IsGrounded())
+        {
+            animator.SetBool("IsJumping", false);
+        }
+        else
+        {
+            animator.SetBool("IsJumping", true);
+        }
+
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            animator.SetBool("IsJumping", true); // Trigger jump animation
         }
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
@@ -47,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
-            transform.localScale = localScale;  
+            transform.localScale = localScale;
         }
     }
 }
