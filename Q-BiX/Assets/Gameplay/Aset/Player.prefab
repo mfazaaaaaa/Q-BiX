@@ -217,12 +217,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6448685255958068997}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.158497, w: 0.98735946}
-  m_LocalPosition: {x: 2.0341413, y: 3.1386294, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.46, y: 4.28, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7507040093828685058}
+  m_Father: {fileID: 1854973470844697496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2385771367380050074
 SpriteRenderer:
@@ -265,7 +265,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 59f646fadfe7c3e4c8dee109ed201373, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f874a4027cdb4d84a8400766b5b5fb0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -372,7 +372,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 698209074229384798}
-    - targetCorrespondingSourceObject: {fileID: -1819529356487467196, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -7552582706839291426, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1878278196888532192}
     m_AddedComponents:
@@ -489,7 +489,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  animator: {fileID: 0}
 --- !u!114 &4438444917673754085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,7 +503,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 20
   attackCollider: {fileID: 1526816281685609062}
-  animator: {fileID: 0}
 --- !u!114 &7985267880016453162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,8 +517,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 0}
   maxHealth: 100
-  loseText: {fileID: 0}
-  enemyFollow: {fileID: 0}
 --- !u!114 &4136452360857356445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,10 +602,5 @@ SpriteRenderer:
 --- !u!212 &6481337102840513701 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: -2926298239643482397, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
-  m_PrefabInstance: {fileID: 1049873626447036998}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7507040093828685058 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -1819529356487467196, guid: 8bf4a19e9d18e93408d20a95dd5e563a, type: 3}
   m_PrefabInstance: {fileID: 1049873626447036998}
   m_PrefabAsset: {fileID: 0}
