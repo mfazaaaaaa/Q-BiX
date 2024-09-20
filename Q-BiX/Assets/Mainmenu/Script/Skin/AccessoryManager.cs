@@ -16,16 +16,17 @@ public class AccessoryManager : MonoBehaviour
     public Sprite unequipButtonSprite;       // Gambar tombol unequip
 
     private Sprite selectedAccessory;        // Aksesori yang dipilih
+    private Sprite equippedAccessory;        // Aksesori yang saat ini di-equip
     private bool isEquipped = false;         // Status apakah aksesori sudah di-equip
 
     void Start()
     {
         // Assign listener ke setiap tombol aksesori
-        accessoryButtons[0].onClick.AddListener(() => SelectAccessory(accessorySprites[0])); // Aksesori pertama
-        accessoryButtons[1].onClick.AddListener(() => SelectAccessory(accessorySprites[1])); // Aksesori kedua
-        accessoryButtons[2].onClick.AddListener(() => SelectAccessory(accessorySprites[2])); // Aksesori ketiga
-        accessoryButtons[3].onClick.AddListener(() => SelectAccessory(accessorySprites[3])); // Aksesori keempat
-        accessoryButtons[4].onClick.AddListener(() => SelectAccessory(accessorySprites[4])); // Aksesori kelima
+        for (int i = 0; i < accessoryButtons.Length; i++)
+        {
+            int index = i;
+            accessoryButtons[i].onClick.AddListener(() => SelectAccessory(accessorySprites[index]));
+        }
 
         // Listener untuk tombol equip/unequip
         equipButton.onClick.AddListener(ToggleEquipAccessory);
@@ -42,9 +43,19 @@ public class AccessoryManager : MonoBehaviour
         // Tampilkan aksesori yang dipilih di preview karakter
         characterPreviewAccessory.sprite = selectedAccessory;
 
-        // Jika aksesori baru dipilih, set tombol ke "equip" mode
-        equipButton.GetComponent<Image>().sprite = equipButtonSprite;
-        isEquipped = false;
+        // Cek apakah aksesori yang dipilih sudah di-equip
+        if (selectedAccessory == equippedAccessory)
+        {
+            // Jika aksesori sudah di-equip, set tombol ke "unequip"
+            equipButton.GetComponent<Image>().sprite = unequipButtonSprite;
+            isEquipped = true;
+        }
+        else
+        {
+            // Jika aksesori belum di-equip, set tombol ke "equip"
+            equipButton.GetComponent<Image>().sprite = equipButtonSprite;
+            isEquipped = false;
+        }
     }
 
     // Fungsi untuk toggle antara equip dan unequip aksesori
@@ -55,6 +66,9 @@ public class AccessoryManager : MonoBehaviour
             // Jika sudah di-equip, maka unequip aksesori
             characterPreviewAccessory.sprite = noAccessorySprite;
             mainMenuCharacterAccessory.sprite = noAccessorySprite;
+
+            // Hapus aksesori yang di-equip
+            equippedAccessory = null;
 
             // Ubah tombol kembali ke "equip"
             equipButton.GetComponent<Image>().sprite = equipButtonSprite;
@@ -70,6 +84,9 @@ public class AccessoryManager : MonoBehaviour
             {
                 characterPreviewAccessory.sprite = selectedAccessory;
                 mainMenuCharacterAccessory.sprite = selectedAccessory;
+
+                // Simpan aksesori yang di-equip
+                equippedAccessory = selectedAccessory;
 
                 // Ubah tombol menjadi "unequip"
                 equipButton.GetComponent<Image>().sprite = unequipButtonSprite;
@@ -107,6 +124,7 @@ public class AccessoryManager : MonoBehaviour
         if (accessoryIndex >= 0 && accessoryIndex < accessorySprites.Length)
         {
             selectedAccessory = accessorySprites[accessoryIndex];
+            equippedAccessory = selectedAccessory;
 
             // Tampilkan aksesori di preview dan main menu
             characterPreviewAccessory.sprite = selectedAccessory;

@@ -15,6 +15,7 @@ public class WeaponManager : MonoBehaviour
     public Sprite unequipSprite;           // Sprite untuk tombol unequip
 
     private Sprite selectedWeapon;         // Weapon yang dipilih
+    private Sprite equippedWeapon;         // Weapon yang saat ini di-equip
 
     void Start()
     {
@@ -39,6 +40,18 @@ public class WeaponManager : MonoBehaviour
 
         // Tampilkan weapon yang dipilih di preview karakter
         characterPreviewWeapon.sprite = selectedWeapon;
+
+        // Cek apakah weapon yang dipilih sudah di-equip
+        if (selectedWeapon == equippedWeapon)
+        {
+            // Jika weapon sudah di-equip, tampilkan tombol 'UNEQUIP'
+            equipButton.image.sprite = unequipSprite;
+        }
+        else
+        {
+            // Jika weapon belum di-equip, tampilkan tombol 'EQUIP'
+            equipButton.image.sprite = equipSprite;
+        }
     }
 
     // Fungsi untuk mengequip/unequip weapon ke main menu dan menyimpannya
@@ -49,16 +62,22 @@ public class WeaponManager : MonoBehaviour
             // Equip: Tampilkan weapon yang dipilih di main menu
             mainMenuCharacterWeapon.sprite = selectedWeapon;
 
+            // Simpan weapon yang di-equip
+            equippedWeapon = selectedWeapon;
+
             // Ubah gambar tombol menjadi 'UNEQUIP'
             equipButton.image.sprite = unequipSprite;
 
             // Simpan weapon yang dipilih
             SaveWeaponPreference();
         }
-        else
+        else if (selectedWeapon != null && mainMenuCharacterWeapon.sprite == selectedWeapon)
         {
             // Unequip: Kembalikan ke kondisi tanpa weapon
             mainMenuCharacterWeapon.sprite = noWeaponSprite;
+
+            // Hapus weapon yang di-equip
+            equippedWeapon = null;
 
             // Ubah gambar tombol menjadi 'EQUIP'
             equipButton.image.sprite = equipSprite;
@@ -99,6 +118,7 @@ public class WeaponManager : MonoBehaviour
         if (weaponIndex >= 0 && weaponIndex < weaponSprites.Length)
         {
             selectedWeapon = weaponSprites[weaponIndex];
+            equippedWeapon = selectedWeapon;
 
             // Tampilkan weapon di preview dan main menu
             characterPreviewWeapon.sprite = selectedWeapon;

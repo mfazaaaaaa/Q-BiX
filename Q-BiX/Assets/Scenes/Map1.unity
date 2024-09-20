@@ -3668,12 +3668,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1854973470844697496, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1854973470844697496, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1854973470844697496, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.29
       objectReference: {fileID: 0}
     - target: {fileID: 1854973470844697496, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.36
+      value: -3.414
       objectReference: {fileID: 0}
     - target: {fileID: 1854973470844697496, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3708,6 +3716,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2385771367380050074, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: m_Size.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385771367380050074, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: m_Size.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385771367380050074, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f874a4027cdb4d84a8400766b5b5fb0f, type: 3}
@@ -3715,6 +3731,10 @@ PrefabInstance:
       propertyPath: characterWeapon
       value: 
       objectReference: {fileID: 503406981}
+    - target: {fileID: 4136452360857356445, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: weaponSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: ec692eae8ff49754cb6f7fbfd2dd5629, type: 3}
     - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
       propertyPath: animator
       value: 
@@ -3757,12 +3777,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 296415551351110343, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 296415551351110343, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 296415551351110343, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.01
       objectReference: {fileID: 0}
     - target: {fileID: 296415551351110343, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.36
+      value: -3.41
       objectReference: {fileID: 0}
     - target: {fileID: 296415551351110343, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
       propertyPath: m_LocalPosition.z

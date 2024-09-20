@@ -49,7 +49,7 @@ public class CharacterCustomizer : MonoBehaviour
 
         // Load aksesori
         int accessoryIndex = PlayerPrefs.GetInt("SelectedAccessoryIndex", -1);
-        if (accessoryIndex >= 0 && accessoryIndex < accessorySprites.Length)
+        if (accessorySprites != null && accessorySprites.Length > 0 && accessoryIndex >= 0 && accessoryIndex < accessorySprites.Length)
         {
             characterAccessory.sprite = accessorySprites[accessoryIndex];
         }
@@ -60,7 +60,7 @@ public class CharacterCustomizer : MonoBehaviour
 
         // Load weapon
         int weaponIndex = PlayerPrefs.GetInt("SelectedWeaponIndex", -1);
-        if (weaponIndex >= 0 && weaponIndex < weaponSprites.Length)
+        if (weaponSprites != null && weaponSprites.Length > 0 && weaponIndex >= 0 && weaponIndex < weaponSprites.Length)
         {
             characterWeapon.sprite = weaponSprites[weaponIndex];
         }

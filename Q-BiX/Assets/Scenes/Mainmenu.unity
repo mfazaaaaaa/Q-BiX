@@ -3839,7 +3839,7 @@ MonoBehaviour:
   weaponSprites:
   - {fileID: 21300000, guid: d90878640d0266e48a7e39124942327f, type: 3}
   - {fileID: 21300000, guid: 89cc15000560c0c48bc1801f76b1a0fe, type: 3}
-  - {fileID: 21300000, guid: a984c5724aa2c6c499dd5c799186792b, type: 3}
+  - {fileID: 21300000, guid: ec692eae8ff49754cb6f7fbfd2dd5629, type: 3}
   - {fileID: 21300000, guid: 59f646fadfe7c3e4c8dee109ed201373, type: 3}
   weaponButtons:
   - {fileID: 2020394985}
@@ -4335,7 +4335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 168, y: 8}
+  m_AnchoredPosition: {x: 168, y: 12}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &705311210
@@ -10072,7 +10072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 186, y: -20}
+  m_AnchoredPosition: {x: 186, y: -8}
   m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1494845155
