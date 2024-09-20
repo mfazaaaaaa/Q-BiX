@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI; // Pastikan ini di-import
 
-public class Menang : MonoBehaviour
+public class Kalah : MonoBehaviour
 {
     public GameObject targetObject; // Object yang akan dicek/dihancurkan
     public Text displayText; // UI Text untuk menampilkan pesan (legacy)

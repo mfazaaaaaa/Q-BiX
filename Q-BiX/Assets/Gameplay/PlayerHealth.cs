@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
         loseText.SetActive (true);
         enemyFollow.enabled = false;
         GameManager.instance.GoToMainMenu(1f);  // Pindah ke main menu setelah 2 detik
-        Destroy(gameObject);  // Hapus musuh langsung tanpa menunggu
+        Destroy(gameObject);  
     }
 
 }
