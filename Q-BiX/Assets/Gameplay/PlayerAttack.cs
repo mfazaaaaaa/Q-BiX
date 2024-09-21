@@ -10,11 +10,13 @@ public class PlayerAttack : MonoBehaviour
     // Buffer untuk menampung collider musuh yang terkena serangan
     private Collider2D[] hitEnemies = new Collider2D[10];
     private bool isAttacking = false; // Menandakan apakah sedang menyerang
+    private float attackCooldown = 0.5f; // Durasi cooldown serangan
+    private float lastAttackTime = 0f; // Waktu serangan terakhir
 
     void Update()
     {
-        // Menyerang saat tombol "R" ditekan
-        if (Input.GetKeyDown(KeyCode.R) && !isAttacking)
+        // Menyerang saat tombol "R" ditekan dan cooldown telah berlalu
+        if (Input.GetKeyDown(KeyCode.R) && !isAttacking && Time.time >= lastAttackTime + attackCooldown)
         {
             Attack();
         }
@@ -23,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
     void Attack()
     {
         isAttacking = true; // Menandakan sedang menyerang
+        lastAttackTime = Time.time; // Catat waktu serangan terakhir
 
         // Cek weapon yang digunakan dan jalankan animasi yang sesuai
         int weaponIndex = PlayerPrefs.GetInt("SelectedWeaponIndex", -1);
