@@ -9,43 +9,49 @@ public class EnemyAttack : MonoBehaviour
     public Transform player; // Referensi untuk posisi player
     public Animator animator; // Animator untuk menjalankan animasi serangan
 
+    public int weaponIndex; // Indeks senjata yang dipilih dari EnemyCustomizer
+
     // Buffer untuk menampung collider player yang terkena serangan
     private Collider2D[] hitPlayers = new Collider2D[10];
     private float lastAttackTime = 0f; // Waktu terakhir musuh menyerang
+    private bool isAttacking = false;  // Status apakah musuh sedang menyerang
 
     void Update()
     {
-        // Serang jika waktu antara serangan terakhir terpenuhi
-        if (Time.time - lastAttackTime >= attackInterval && !animator.GetBool("IsAttacking"))
+        // Cek apakah player ada dalam jangkauan
+        if (IsPlayerInRange())
         {
-            Attack();
-            lastAttackTime = Time.time; // Update waktu terakhir serangan
+            if (Time.time - lastAttackTime >= attackInterval && !isAttacking)
+            {
+                Attack();
+                lastAttackTime = Time.time; // Update waktu terakhir serangan
+            }
+        }
+        else
+        {
+            StopAttackAnimations(); // Hentikan animasi serangan jika player keluar jangkauan
         }
     }
 
     void Attack()
     {
-        // Set IsAttacking ke true untuk memulai animasi serangan
-        animator.SetBool("IsAttacking", true);
+        isAttacking = true; // Set status menyerang
+        animator.SetBool("IsAttacking", true); // Aktifkan animasi menyerang
 
-        // Cek weapon yang digunakan oleh musuh dan jalankan animasi yang sesuai
-        int weaponIndex = PlayerPrefs.GetInt("EnemyWeaponIndex", -1);
-        Debug.Log("Enemy Weapon Index: " + weaponIndex); // Log untuk debug
-
-        // Pastikan untuk mengatur trigger yang tepat
-        if (weaponIndex == -1)
+        // Memilih animasi berdasarkan senjata
+        if (weaponIndex == -1)  // Jika tidak ada senjata atau 'NoWeapon'
         {
-            animator.SetTrigger("Pukul");
-            Debug.Log("Trigger Pukul");
+            animator.SetTrigger("Pukul");  // Animasi memukul
+            Debug.Log("Trigger Pukul (No Weapon)");
         }
-        else if (weaponIndex == 0 || weaponIndex == 1 || weaponIndex == 3)
+        else if (weaponIndex == 0 || weaponIndex == 1 || weaponIndex == 3)  // Weapon Index 0, 1, atau 3
         {
-            animator.SetTrigger("Tebas");
+            animator.SetTrigger("Tebas");  // Animasi menebas
             Debug.Log("Trigger Tebas");
         }
-        else if (weaponIndex == 2)
+        else if (weaponIndex == 2)  // Weapon Index 2
         {
-            animator.SetTrigger("Tusuk");
+            animator.SetTrigger("Tusuk");  // Animasi menusuk
             Debug.Log("Trigger Tusuk");
         }
 
@@ -66,17 +72,45 @@ public class EnemyAttack : MonoBehaviour
             }
         }
 
-        // Setelah animasi selesai, kembali ke idle
+        // Setelah serangan selesai, reset status menyerang
         StartCoroutine(ResetAttack());
     }
 
-    private IEnumerator ResetAttack()
+    IEnumerator ResetAttack()
     {
-        // Tunggu hingga durasi animasi serangan selesai
-        float animationDuration = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(animationDuration);
+        // Tunggu sedikit waktu sebelum reset status serangan
+        yield return new WaitForSeconds(0.1f);
+        isAttacking = false; // Reset status menyerang
+        animator.SetBool("IsAttacking", false); // Nonaktifkan animasi menyerang
+    }
 
-        // Kembali ke idle setelah reset
-        animator.SetBool("IsAttacking", false); // Mengatur kembali ke idle
+    bool IsPlayerInRange()
+    {
+        // Cek apakah player ada di dalam attack collider
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.NoFilter(); // Tidak ada filter khusus
+
+        int hitCount = attackCollider.OverlapCollider(filter, hitPlayers);
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            if (hitPlayers[i].CompareTag("Player"))
+            {
+                return true; // Ada player dalam jangkauan
+            }
+        }
+
+        return false; // Tidak ada player dalam jangkauan
+    }
+
+    void StopAttackAnimations()
+    {
+        // Reset semua trigger serangan dan hentikan animasi serangan
+        animator.ResetTrigger("Pukul");
+        animator.ResetTrigger("Tebas");
+        animator.ResetTrigger("Tusuk");
+        animator.SetBool("IsAttacking", false); // Nonaktifkan animasi serangan
+        isAttacking = false; // Pastikan status menyerang juga di-reset
+        Debug.Log("Stopping attack animations");
     }
 }

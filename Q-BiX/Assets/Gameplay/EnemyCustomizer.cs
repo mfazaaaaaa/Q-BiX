@@ -6,7 +6,6 @@ public class EnemyCustomizer : MonoBehaviour
     public SpriteRenderer enemyAccessory;  // Aksesori musuh
     public SpriteRenderer enemyWeapon;     // Senjata musuh
 
-    // Daftar skin yang terdiri dari beberapa bagian tubuh
     public Sprite[] yellowSkinSprites;   // Skin kuning
     public Sprite[] blueSkinSprites;     // Skin biru
     public Sprite[] greenSkinSprites;    // Skin hijau
@@ -15,8 +14,14 @@ public class EnemyCustomizer : MonoBehaviour
     public Sprite[] accessoryOptions;    // Pilihan aksesori
     public Sprite[] weaponOptions;       // Pilihan senjata
 
+    private EnemyAttack enemyAttack; // Referensi ke script EnemyAttack
+
     void Start()
     {
+        // Mendapatkan referensi EnemyAttack
+        enemyAttack = GetComponent<EnemyAttack>();
+
+        // Randomize musuh dan senjata
         RandomizeEnemy();
     }
 
@@ -58,8 +63,16 @@ public class EnemyCustomizer : MonoBehaviour
         // Memilih senjata acak
         if (weaponOptions.Length > 0)
         {
-            Sprite randomWeapon = weaponOptions[Random.Range(0, weaponOptions.Length)];
-            enemyWeapon.sprite = randomWeapon;
+            int randomWeaponIndex = Random.Range(0, weaponOptions.Length);
+            enemyWeapon.sprite = weaponOptions[randomWeaponIndex];
+
+            // Menyimpan weapon index di EnemyAttack
+            enemyAttack.weaponIndex = randomWeaponIndex;
+        }
+        else
+        {
+            // Jika tidak ada senjata
+            enemyAttack.weaponIndex = -1; // NoWeapon
         }
     }
 }
