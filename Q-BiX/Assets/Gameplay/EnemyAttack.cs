@@ -11,10 +11,16 @@ public class EnemyAttack : MonoBehaviour
 
     public int weaponIndex; // Indeks senjata yang dipilih dari EnemyCustomizer
 
+    // Array untuk menampung 3 sound effect untuk setiap jenis serangan
+    public AudioClip[] pukulSounds; // 3 sound pukul
+    public AudioClip[] tebasSounds; // 3 sound tebas
+    public AudioClip[] tusukSounds; // 3 sound tusuk
+
     // Buffer untuk menampung collider player yang terkena serangan
     private Collider2D[] hitPlayers = new Collider2D[10];
     private float lastAttackTime = 0f; // Waktu terakhir musuh menyerang
     private bool isAttacking = false;  // Status apakah musuh sedang menyerang
+    private System.Random random = new System.Random(); // Random number generator
 
     void Update()
     {
@@ -38,20 +44,23 @@ public class EnemyAttack : MonoBehaviour
         isAttacking = true; // Set status menyerang
         animator.SetBool("IsAttacking", true); // Aktifkan animasi menyerang
 
-        // Memilih animasi berdasarkan senjata
+        // Memilih animasi dan sound berdasarkan senjata
         if (weaponIndex == -1)  // Jika tidak ada senjata atau 'NoWeapon'
         {
             animator.SetTrigger("Pukul");  // Animasi memukul
+            PlayRandomSound(pukulSounds); // Mainkan sound pukul secara random
             Debug.Log("Trigger Pukul (No Weapon)");
         }
         else if (weaponIndex == 0 || weaponIndex == 1 || weaponIndex == 3)  // Weapon Index 0, 1, atau 3
         {
             animator.SetTrigger("Tebas");  // Animasi menebas
+            PlayRandomSound(tebasSounds); // Mainkan sound tebas secara random
             Debug.Log("Trigger Tebas");
         }
         else if (weaponIndex == 2)  // Weapon Index 2
         {
             animator.SetTrigger("Tusuk");  // Animasi menusuk
+            PlayRandomSound(tusukSounds); // Mainkan sound tusuk secara random
             Debug.Log("Trigger Tusuk");
         }
 
@@ -74,6 +83,15 @@ public class EnemyAttack : MonoBehaviour
 
         // Setelah serangan selesai, reset status menyerang
         StartCoroutine(ResetAttack());
+    }
+
+    void PlayRandomSound(AudioClip[] soundArray)
+    {
+        if (soundArray.Length > 0)
+        {
+            int randomIndex = random.Next(0, soundArray.Length); // Pilih secara acak
+            AudioSource.PlayClipAtPoint(soundArray[randomIndex], transform.position);
+        }
     }
 
     IEnumerator ResetAttack()

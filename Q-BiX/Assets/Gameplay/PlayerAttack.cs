@@ -7,11 +7,16 @@ public class PlayerAttack : MonoBehaviour
     public Collider2D attackCollider; // Collider yang sudah disiapkan di depan pemain
     public Animator animator; // Animator untuk menjalankan animasi serangan
 
-    // Buffer untuk menampung collider musuh yang terkena serangan
+    // Array untuk menampung 3 sound effect untuk setiap jenis serangan
+    public AudioClip[] pukulSounds; // 3 sound pukul
+    public AudioClip[] tebasSounds; // 3 sound tebas
+    public AudioClip[] tusukSounds; // 3 sound tusuk
+
     private Collider2D[] hitEnemies = new Collider2D[10];
     private bool isAttacking = false; // Menandakan apakah sedang menyerang
     private float attackCooldown = 0.5f; // Durasi cooldown serangan
     private float lastAttackTime = 0f; // Waktu serangan terakhir
+    private System.Random random = new System.Random(); // Random number generator
 
     void Update()
     {
@@ -33,14 +38,17 @@ public class PlayerAttack : MonoBehaviour
         if (weaponIndex == -1)
         {
             animator.SetTrigger("Pukul");
+            PlayRandomSound(pukulSounds); // Mainkan sound pukul secara random
         }
         else if (weaponIndex == 0 || weaponIndex == 1 || weaponIndex == 3)
         {
             animator.SetTrigger("Tebas");
+            PlayRandomSound(tebasSounds); // Mainkan sound tebas secara random
         }
         else if (weaponIndex == 2)
         {
             animator.SetTrigger("Tusuk");
+            PlayRandomSound(tusukSounds); // Mainkan sound tusuk secara random
         }
 
         // Memproses collider serangan
@@ -60,6 +68,15 @@ public class PlayerAttack : MonoBehaviour
 
         // Setelah animasi selesai, kembali ke idle
         StartCoroutine(ResetAttack());
+    }
+
+    void PlayRandomSound(AudioClip[] soundArray)
+    {
+        if (soundArray.Length > 0)
+        {
+            int randomIndex = random.Next(0, soundArray.Length); // Pilih secara acak
+            AudioSource.PlayClipAtPoint(soundArray[randomIndex], transform.position);
+        }
     }
 
     private IEnumerator ResetAttack()

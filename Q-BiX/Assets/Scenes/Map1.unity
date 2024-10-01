@@ -3654,7 +3654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1945702075
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3961,6 +3961,54 @@ PrefabInstance:
       propertyPath: attackDamage
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: pukulSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: tebasSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: tusukSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: pukulSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c3342834c470214b93026b01210487a, type: 3}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: pukulSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4beb7628080285f48a4d751772776b92, type: 3}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: pukulSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6dfc6ccf68421e246849a181af9a6d99, type: 3}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: tebasSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 146512fb1f66277409601227474ec66e, type: 3}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: tebasSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8aa4e9ed5ee49c245a033891336bdef9, type: 3}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: tebasSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ae9119412f4c34944a91c3032fa6ae5d, type: 3}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: tusukSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 633f86367127b3343a1dfea5f6564dba, type: 3}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: tusukSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ccc1eced576d9384cb1e9c298e408c99, type: 3}
+    - target: {fileID: 4438444917673754085, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
+      propertyPath: tusukSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e5918e7d8cbabb438ea44f307f1fdcb, type: 3}
     - target: {fileID: 6766194010850696497, guid: b6935cc0fe7303c47bd6596a00165873, type: 3}
       propertyPath: animator
       value: 
@@ -4106,6 +4154,54 @@ PrefabInstance:
       propertyPath: attackInterval
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: pukulSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: tebasSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: tusukSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: pukulSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c3342834c470214b93026b01210487a, type: 3}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: pukulSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4beb7628080285f48a4d751772776b92, type: 3}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: pukulSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6dfc6ccf68421e246849a181af9a6d99, type: 3}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: tebasSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 146512fb1f66277409601227474ec66e, type: 3}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: tebasSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8aa4e9ed5ee49c245a033891336bdef9, type: 3}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: tebasSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ae9119412f4c34944a91c3032fa6ae5d, type: 3}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: tusukSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 633f86367127b3343a1dfea5f6564dba, type: 3}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: tusukSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ccc1eced576d9384cb1e9c298e408c99, type: 3}
+    - target: {fileID: 7138568058378023102, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
+      propertyPath: tusukSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e5918e7d8cbabb438ea44f307f1fdcb, type: 3}
     - target: {fileID: 7245466110097490506, guid: aa00e20c6d9fac94e80bd4bec54497bb, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.28
